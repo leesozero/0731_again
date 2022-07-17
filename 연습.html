@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 사용이유</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <style>
+
+    </style>    
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script> 
+    <script>
+//1. ready 선언하기
+        $(document).ready(function(){
+            // 2. 첫번째 li속 a의 첫번째메뉴라는 글자를 삽입하기 html
+            $('#navi li:nth-child(1) a').html('첫번째메뉴')
+            // 3. 첫번째 메뉴라는 글자를 클릭하면 네이버로 넘어간다. attr
+            $('#navi li:nth-child(1) a').attr('href','http://www.naver.com');
+            // 4. 첫번째 메뉴 글자색이 초록색이고 언더라인을 없애라.
+            // json은 -(하이픈표현 불가) text-decoration을 textDecoration으로 씀
+            $('#navi li:nth-child(1) a').css({                
+                "textDecoration" : "none"
+            })
+            // 5. data값 써보기 $(this) 이문장에서 쓰게되면 $(document)가 됨
+            $('#navi li:nth-child(1) a').css('color',$('#navi li:nth-child(1) a').data('color'))
+            // 6. each 메서드 1번 li 제외하고 실행한다.
+                // css, html , attr 메서드들은 어떻게하라고 구체적인 표현을 넣는다면
+                // each 메서드 실행하라고 표현해서 function(){}
+            // $('#navi li:not(:nth-child(1))').each(function(){
+
+            // })
+            // $('#navi li + li').each(function(){
+
+            // })
+            // $('#navi li:not(:first)').each(function(){
+
+            // })
+            // $('#navi li').not(':first').each(function(){
+            //     //제외선택자 not은 숫자안해
+            //     $(this).html('첫번째제외한 메뉴들')
+            // })
+            // $('#navi li').eq(0).each(function(){
+            //     // 순번인 숫자로 받아요
+            //     $(this).html('첫번째메뉴')
+            // })
+            // 7. 첫번째li만 빼고 모든 li들의 a텍스트가 메뉴들이라고 노출하기
+            $('#navi li').not(':first').find('a').each(function(){
+                //제외선택자 not은 숫자안해
+                $(this).html('첫번째제외한 메뉴들')
+            })
+            $('#navi li').eq(0).find('a').each(function(){
+                // 순번인 숫자로 받아요
+                $(this).html('첫번째메뉴')
+            })
+
+        })
+
+    </script>    
+</head>
+<body>
+    <ul id="navi">
+        <li class="navi1"><a href="" data-color="green"></a></li>
+        <li class="navi2"><a href=""></a></li>
+        <li class="navi3"><a href=""></a></li>
+        <li class="navi4"><a href=""></a></li>
+        <li class="navi5"><a href=""></a></li>
+    </ul>
+</body>
+</html>
