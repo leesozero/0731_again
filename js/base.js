@@ -2,7 +2,7 @@
 
     var navidata = [
         {
-            d1 : ['회사소개','company.html'],
+            d1 : ['회사소개','#about'],
             d2 : [
 
                 ['비전',''],
@@ -41,14 +41,20 @@
     // link 자리 식>> ${navidata[i].d1[1]}  
     // text 자리 식>> ${navidata[i].d1[0]}
 
+      
+    // 나자신은 어레이 라는데...ㅠㅠ?
+    //  = 대입식 이고...navidata
+    //  += 추가대입식...
+   
+
     $(document).ready(function(){
         var navitag = "";
     
         for( var i in navidata ){
         
-           navitag += `<li><a href='${navidata[i].d1[1]}'>${navidata[i].d1[0]}</a>` 
+           navitag += `<li class="nav-item position-relative"><a href='${navidata[i].d1[1]}' class="py-2 py-md-0 d-block px-0 px-md-3">${navidata[i].d1[0]}</a>` 
                 for( var j in navidata[i].d2 ){ //각메뉴의 소메뉴정렬>>> j는 초... i분 j변수가 다 돌때까지 i는 증가하질 못하고 대기
-                    if(j ==0) navitag += `<ul>`;
+                    if(j ==0) navitag += `<ul class='bg-white d2'>`;
                     navitag += `<li><a href='${navidata[i].d2[j][1]}'>${navidata[i].d2[j][0]}</a>` 
                     if(j == navidata[i].d2.length -1) navitag += '</ul>'; // 제일 마지막 끝나고 추가
 
@@ -56,16 +62,7 @@
            navitag += `</li>`
         }
         
-        
-       
-        // navitag += `<li><a href='${navidata[0].d1[1]}'>${navidata[0].d1[0]}</a></li>` 
-        // navitag += `<li><a href='${navidata[1].d1[1]}'>${navidata[1].d1[0]}</a></li>` 
-        // navitag += `<li><a href='${navidata[2].d1[1]}'>${navidata[2].d1[0]}</a></li>` 
-        // navitag += `<li><a href='${navidata[3].d1[1]}'>${navidata[3].d1[0]}</a></li>` 
-        // 나자신은 어레이 라는데...ㅠㅠ?
-        //  = 대입식 이고...navidata
-        //  += 추가대입식...
-   
-        $('ul#navi').html(navitag);
+    
+        $('#navbarNav > ul').html(navitag);
      })
 
